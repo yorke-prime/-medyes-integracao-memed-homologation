@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+    const myKeysValues = window.location.search;
+    const urlParams = new URLSearchParams(myKeysValues);
+    const dados = {};
+    const paciente = {};
+    dados.token = urlParams.get('token');
+
+    paciente.external_id = urlParams.get('external_id');
+    paciente.nome = urlParams.get('nome');
+    paciente.cpf = urlParams.get('cpf');
+    paciente.telefone = urlParams.get('telefone');
+
+    const addE = (e) => document.head.appendChild(e);
+    function addScript( callback ) {
+        let script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = "https://memed.com.br/modulos/plataforma.sinapse-prescricao/build/sinapse-prescricao.min.js";
+        script.setAttribute('data-token', dados.token)
+        document.head.appendChild( script );
+        script.onload=callback;
+    }
+    const addScript2 = (e) => {
+        let script = document.createElement('script');
+        script.src = './script.js';
+        script.type = 'text/javascript';
+        addE(script);
+    };
+
+    addScript(addScript2);
+</script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="box">
+        <div class="boxLoader">
+            <span class="loader"></span>
+        </div>
+        <div class="tent" id="caixa">
+            <p id="status">Carregando: Pré carregamento </p>
+            <button onclick="atualizar()" class="refresh">Atualizar</button>
+        </div>
+    </div>
+</body>
+<script>
+    function atualizar() {
+      window.location.reload();
+    }
+</script>
+</html>
