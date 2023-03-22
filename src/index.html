@@ -16,7 +16,7 @@
     function addScript( callback ) {
         let script = document.createElement('script');
         script.type = 'text/javascript';
-        script.src = "https://memed.com.br/modulos/plataforma.sinapse-prescricao/build/sinapse-prescricao.min.js";
+        script.src = "https://integrations.api.memed.com.br/modulos/plataforma.sinapse-prescricao/build/sinapse-prescricao.min.js";
         script.setAttribute('data-token', dados.token)
         document.head.appendChild( script );
         script.onload=callback;
